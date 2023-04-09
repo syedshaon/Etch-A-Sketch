@@ -1,0 +1,23 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 0px;
+}
+
+.items {
+  width: 250px;
+  height: 250px;
+  flex: auto;
+  background-color: rgba(6, 37, 3, 0.274);
+  box-sizing: border-box;
+  /* margin: 2px; */
+  border: 1px solid rgb(77, 139, 19);
+}
+
+.color {
+  background-color: white;
+  transition: all 0.1s;
+}
