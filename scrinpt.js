@@ -27,7 +27,7 @@ function ChangeDiv() {
   });
 
   colorDiv();
-  changeBG();
+  //   changeBG();
 }
 
 const currentDiv = document.getElementById("container");
@@ -43,13 +43,16 @@ function colorDiv() {
   const effectiveDiv = document.querySelectorAll(".items");
 
   effectiveDiv.forEach((element) => {
-    element.addEventListener("mouseover", () => {
-      element.classList.toggle("color");
+    element.addEventListener("mouseover", (e) => {
+      //   element.classList.add("color");
+      x = e.offsetX;
+      y = e.offsetY;
+      element.style.backgroundColor = `rgb(${x}, ${y}, ${x - y})`;
     });
 
-    element.addEventListener("mouseout", () => {
-      element.classList.toggle("color");
-    });
+    // element.addEventListener("mouseout", () => {
+    //   element.classList.toggle("color");
+    // });
   });
 }
 
@@ -75,4 +78,4 @@ function changeBG() {
     });
 }
 
-changeBG();
+// changeBG();
