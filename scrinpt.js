@@ -1,5 +1,17 @@
+function takeUserInput() {
+  userInput = prompt("Please enter a number between 1 and 100");
+  if (userInput < 1 || userInput > 100) {
+    takeUserInput();
+  }
+  return userInput;
+}
+
 function ChangeDiv() {
-  const userInput = prompt("Enter the number of divs for every column");
+  let userInput = prompt("Enter the number of divs for every column");
+
+  if (userInput < 1 || userInput > 100) {
+    userInput = takeUserInput();
+  }
   const numberofDivs = userInput * userInput;
   let allDivs = "";
 
@@ -27,7 +39,6 @@ function ChangeDiv() {
   });
 
   colorDiv();
-  //   changeBG();
 }
 
 const currentDiv = document.getElementById("container");
@@ -45,9 +56,10 @@ function colorDiv() {
   effectiveDiv.forEach((element) => {
     element.addEventListener("mouseover", (e) => {
       //   element.classList.add("color");
-      x = e.offsetX;
-      y = e.offsetY;
-      element.style.backgroundColor = `rgb(${x}, ${y}, ${x - y})`;
+      x = Math.floor(Math.sqrt(e.clientX / innerWidth) * 230);
+      y = Math.floor(Math.sqrt(e.clientY / innerWidth) * 230);
+      element.style.backgroundColor = `rgb( 255, ${x}, ${y})`;
+      console.log(x, y);
     });
 
     // element.addEventListener("mouseout", () => {
@@ -57,25 +69,3 @@ function colorDiv() {
 }
 
 colorDiv();
-function changeBG() {
-  const mouseHoverDivs = document.querySelectorAll(".items");
-  mouseHoverDivs.forEach((element) => {
-    element.addEventListener("mousemove", function (e) {
-      x = e.offsetX;
-      y = e.offsetY;
-      element.style.backgroundColor = `rgb(${x}, ${y}, ${x - y})`;
-    });
-    element.addEventListener("mouseout", () => {
-      element.style.backgroundColor = `rgba(6, 37, 3, 0.274)`;
-    });
-  });
-  document
-    .querySelectoral(".items")
-    .addEventListener("mousemove", function (e) {
-      x = e.offsetX;
-      y = e.offsetY;
-      div.style.backgroundColor = `rgb(${x}, ${y}, ${x - y})`;
-    });
-}
-
-// changeBG();
